@@ -9,7 +9,7 @@ function hideBlocks(nameFun) {
     if(nameFun == getAdress || nameFun == showLocation){
         document.getElementById('result').style.display = 'block';
         document.getElementById('formAddress').style.display = 'none';
-        document.getElementById('result2').style.display = 'none';
+        document.getElementById('result2').style.display = 'no';
     }
     if (nameFun == showMapGoogle) {
         document.getElementById('result2').style.display = 'block';
@@ -121,13 +121,17 @@ function recUrl(lat, lng) {//формируем урл
 function geolocationError(positionError) {
     document.getElementById('result').style.display = 'block';
     document.getElementById('result2').style.display = 'none';
-    if (positionError == 1) {
+    var code = 'code';
+    if (positionError == 1 || positionError[code] == 1) {
         document.getElementById('result').innerHTML = 'Не дали согласие на геолокацию!';
     }
-    else if (positionError == 2) {
+    else if (positionError == 2 || positionError[code] == 2) {
         document.getElementById('result').innerHTML = 'Проблемы с сетью';
     }
+    else if (positionError == 3 || positionError[code] == 3) {
+        document.getElementById('result').innerHTML = 'Время вышло';
+    }
     else {
-        document.getElementById('result').innerHTML = 'He удалось определить местоположение';
+        document.getElementById('result').innerHTML = 'Ошибка неизвестна';
     }
 }
