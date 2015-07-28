@@ -31,14 +31,13 @@ function addressSearchByCoord() {
         var lat = +document.getElementById('lat').value.replace (/\,/, '.'),//регулярки добавим для возможности
             lng = +document.getElementById('lng').value.replace (/\,/, '.');//вводить и запятые и точки
         console.log(lat, lng);
-        var url = 'http://maps.google.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=false';
-        takeTheAddressOfJson(url);
+        //var url = 'http://maps.google.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=false';
+        takeTheAddressOfJson(recUrl(lat, lng));
     document.getElementById('lat').value = "";
     document.getElementById('lng').value = "";
 }
 
 function takeTheAddressOfJson(url){
-    //alert(url);
     document.getElementById('result2').style.display = 'none';
     document.getElementById('result').innerHTML = "";
     var xhttp = new XMLHttpRequest(),
@@ -52,7 +51,7 @@ function takeTheAddressOfJson(url){
                 console.log(json);
                 document.getElementById('result').style.display = 'block';
                 document.getElementById('result').innerHTML =
-                   '<p><b>Ваше местоположение: <br/>' + results[0].formatted_address;
+                   '<p><b>Ваше местоположение: <br/>' + json.results[0].formatted_address;
             }
         }
         catch (e) {
@@ -62,10 +61,8 @@ function takeTheAddressOfJson(url){
 }
 
 function getAdress(position) {
-    var lat = position.coords.latitude,
-        lng = position.coords.longitude;
-    var url = 'http://maps.google.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=false';
-    takeTheAddressOfJson(url);
+    var coord = recCoords(position);
+    takeTheAddressOfJson(recUrl(coord[0], coord[1]));
 }
 
 function showLocation(position){
@@ -84,9 +81,8 @@ function showLocation(position){
 
 function showMapGoogle(position){
     try{
-        var latitude = position.coords.latitude,
-            longitude = position.coords.longitude;
-        coords = new google.maps.LatLng(latitude, longitude),
+        var coord = recCoords(position);//получаю координаты
+        coords = new google.maps.LatLng(coord[0], coord[1]),// и удобно с ними работаю
             mapOptions = {
                 zoom: 17,
                 center: coords,
@@ -110,4 +106,12 @@ function showMapGoogle(position){
     }
 }
 
+function recCoords(position) {//определение тек.кординат возвращаем в массиве
+    var coord = [position.coords.latitude, position.coords.longitude];
+    return coord;
+}
 
+function recUrl(lat, lng) {//формируем урл
+    var url = 'http://maps.google.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=false';
+    return url;
+}
