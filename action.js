@@ -9,7 +9,7 @@ function hideBlocks(nameFun) {
     if(nameFun == getAdress || nameFun == showLocation){
         document.getElementById('result').style.display = 'block';
         document.getElementById('formAddress').style.display = 'none';
-        document.getElementById('result2').style.display = 'no';
+        document.getElementById('result2').style.display = 'none';
     }
     if (nameFun == showMapGoogle) {
         document.getElementById('result2').style.display = 'block';
