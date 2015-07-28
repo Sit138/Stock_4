@@ -23,16 +23,16 @@ function showGeolocation(nameFun) {
         navigator.geolocation.getCurrentPosition(nameFun); //{
     }
     else {
-        alert("Невозможно вывести координаты!");
+        document.getElementById('result2').innerHTML = 'Невозможно определить координаты';
     }
 }
 
 function addressSearchByCoord() {
-    var lat = +document.getElementById('lat').value.replace (/\,/, '.'),//регулярки добавим для возможности
-        lng = +document.getElementById('lng').value.replace (/\,/, '.');//вводить и запятые и точки
-    console.log(lat, lng);
-    var url = 'http://maps.google.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=false';
-    takeTheAddressOfJson(url);
+        var lat = +document.getElementById('lat').value.replace (/\,/, '.'),//регулярки добавим для возможности
+            lng = +document.getElementById('lng').value.replace (/\,/, '.');//вводить и запятые и точки
+        console.log(lat, lng);
+        var url = 'http://maps.google.com/maps/api/geocode/json?latlng=' + lat + ',' + lng + '&sensor=false';
+        takeTheAddressOfJson(url);
     document.getElementById('lat').value = "";
     document.getElementById('lng').value = "";
 }
@@ -52,11 +52,11 @@ function takeTheAddressOfJson(url){
                 console.log(json);
                 document.getElementById('result').style.display = 'block';
                 document.getElementById('result').innerHTML =
-                   '<p><b>Ваше местоположение: <br/>' + json.results[0].formatted_address;
+                   '<p><b>Ваше местоположение: <br/>' + results[0].formatted_address;
             }
         }
         catch (e) {
-            alert('Sorry, the data error...');
+            document.getElementById('result').innerHTML =  '<b>Sorry, the data error...</b>';
         }
     }
 }
@@ -69,20 +69,24 @@ function getAdress(position) {
 }
 
 function showLocation(position){
-    var lat = position.coords.latitude,
-        lng = position.coords.longitude;
-    document.getElementById('result').innerHTML = "";
-    document.getElementById('result').innerHTML =
-        '<p><b>Координаты Вашего местоположения: <br/>' +
-        lat + " :: " + lng + '</b></p>';
-    var arr = [lat, lng];
-    return arr;
+    try{
+        var lat = position.coords.latitude,
+            lng = position.coords.longitude;
+        document.getElementById('result').innerHTML = "";
+        document.getElementById('result').innerHTML =
+            '<p><b>Координаты Вашего местоположения: <br/>' +
+            lat + " :: " + lng + '</b></p>';
+    }
+    catch (e){
+        document.getElementById('result').innerHTML =  '<b>Sorry, the data error...</b>';
+    }
 }
 
 function showMapGoogle(position){
+    try{
         var latitude = position.coords.latitude,
             longitude = position.coords.longitude;
-            coords = new google.maps.LatLng(latitude, longitude),
+        coords = new google.maps.LatLng(latitude, longitude),
             mapOptions = {
                 zoom: 17,
                 center: coords,
@@ -90,8 +94,8 @@ function showMapGoogle(position){
                 navigationControlOptions: {
                     style: google.maps.NavigationControlStyle.SMALL
                 },
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
+                mapTypeId: google.maps.MapTypeId.ROADMAP
+            };
         map = new google.maps.Map(
             document.getElementById("result2"), mapOptions
         );
@@ -100,6 +104,10 @@ function showMapGoogle(position){
             map: map,
             title: "Your current location!"
         });
+    }
+    catch (e) {
+        document.getElementById('result2').innerHTML =  '<b>Sorry, the data error...</b>';
+    }
 }
 
 
