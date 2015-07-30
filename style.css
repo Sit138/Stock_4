@@ -1,102 +1,78 @@
 .tmenu {
-    width: 100%;
-
-}
-
-.tmenu ul {
+  width: 100%; }
+  .tmenu ul {
     list-style-type: none;
     padding: 0;
     margin: 0 auto;
-    width: 1000px;
-}
+    width: 1000px; }
+    .tmenu ul li {
+      font-family: Arial, sans-serif;
+      font-size: 20px;
+      background-color: burlywood;
+      display: block;
+      float: left;
+      padding: 0 1%;
+      min-height: 15px;
+      box-shadow: 0 0 30px #1464fa;
+      border-radius: 2px;
+      -moz-border-radius: 2px;
+      -webkit-border-radius: 2px; }
+      .tmenu ul li a {
+        color: #E0FFFF;
+        text-decoration: none; }
 
-.tmenu ul li {
-    display: block;
-    float: left;
-    padding:0 1%;
-    min-height: 15px;
-    font-family: Arial, sans-serif;
-    font-size: 20px;
-    background-color: burlywood;
-    box-shadow: 0 0 30px rgba(20,100,250,1.5);
-    border-radius: 2px;
-}
+#show, #address, #find, #map {
+  color: #E0FFFF;
+  text-decoration: none; }
 
-.tmenu li a {
-    color: #E0FFFF;
-    text-decoration: none;
-}
-
-#show, #address, #find, #map{
-    color: #E0FFFF;
-    text-decoration: none;
-}
 #show:hover, #address:hover, #find:hover, #map:hover {
-    cursor: pointer;
-    background-color: cornflowerblue;
-    border-bottom: 2px solid #FFF;
-    box-shadow: 0 0 10px rgba(100,0,0,0.9);
-}
+  cursor: pointer;
+  background-color: cornflowerblue;
+  border-bottom: 2px solid #FFF;
+  box-shadow: 0 0 10px rgba(100, 0, 0, 0.9); }
+
+#result, #result2, #formAddress {
+  position: relative;
+  height: 100px;
+  width: 500px;
+  border: 3px solid #eaeaea;
+  text-align: center;
+  margin: auto;
+  font-size: larger; }
+
 #result2 {
-    position:relative;
-    height: 400px;
-    width: 800px;
-    border:10px solid #eaeaea;
-    text-align: center;
-    margin: auto;
-}
-#result {
-    position:relative;
-    height: 100px;
-    width: 500px;
-    border:3px solid #eaeaea;
-    text-align: center;
-    margin: auto;
-    font-size: larger;
-}
+  height: 400px;
+  width: 800px;
+  border: 10px solid #eaeaea; }
 
 #formAddress {
-    margin: auto;
-    text-align: center;
-    border:10px solid #eaeaea;
-    border-radius: 5px;
-    width: 200px;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 16px;
-}
-
-#formAddress input {
+  font-family: Arial, sans-serif;
+  width: 200px;
+  height: 130px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border: 10px solid #eaeaea; }
+  #formAddress input, #formAddress input[type="button"] {
     background-color: seashell;
     border: solid 1px;
     border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
     text-align: center;
-    font-family: 'Open Sans', sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 12pt;
-    box-shadow:  0px 10px 20px 0px rgba(0, 100, 100, 0.3);
-    height: 25px;
-}
-
-#formAddress input:focus {
-    background-color: darkgrey;
-}
-
-#formAddress input[type="button"] {
-    background-color: cornsilk;
-    border: solid 1px;
-    border-radius: 3px;
-    text-align: center;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14pt;
+    box-shadow: 0px 10px 20px 0px rgba(0, 100, 100, 0.3);
+    height: 25px; }
+  #formAddress input:focus {
+    background-color: darkgrey; }
+  #formAddress input[type="button"] {
     font-weight: bold;
-    height: 25px;
-}
+    font-size: 14pt; }
+  #formAddress input[type="button"]:hover {
+    background-image: -webkit-linear-gradient(top, transparent, rgba(0, 0, 0, 0.5));
+    background-image: -moz-linear-gradient(top, transparent, rgba(0, 0, 0, 0.5));
+    background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.5));
+    background-image: linear-gradient(top, transparent, rgba(0, 0, 0, 0.5)); }
 
-#formAddress input[type="button"]:hover {
-    /*Градиент*/
-    background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5));
-    background-image: -moz-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
-    background-image: -o-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
-    background-image: linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.2));
-}
-
-
+/*# sourceMappingURL=style.css.map */
